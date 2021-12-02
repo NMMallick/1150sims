@@ -9,6 +9,8 @@ class Node:
 
     _transmission_time = (_packetsize*8)/_bitrate
     _tao = .1
+
+    # Global variables 
     _tNodes = 0
     _slot = 0
     _num_collisions = 0
@@ -33,7 +35,7 @@ class Node:
         self.successful_xmissions += 1
 
     def ptransmit(self): 
-        list = [0,1]
+        list = [0,1] # 0 - don't transmit, 1 - transmit
         dist = [1-(Node._n/Node._m), Node._n/Node._m]
         return random.choices(list, dist)
 
@@ -55,5 +57,8 @@ class Node:
         Node._tNodes -= 1
         
 
-
-        
+    def clearData(): 
+        Node._tNodes = 0
+        Node._slot = 0
+        Node._num_collisions = 0
+        Node._num_successful_xmission = 0

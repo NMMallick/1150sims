@@ -23,6 +23,7 @@ for f in range(10):
         exit(-1)
 
     # Load new vehicle nodes 
+    # Change range for number of vehicle nodes 
     for i in range(10): 
         cars.append(Node(id=i))
 
@@ -58,6 +59,7 @@ for f in range(10):
             print("Node", Node._is_transmiting[0], "is successfully transmitting.")
 
         Node._is_transmiting.clear() # Clear the list for next slot
+        # sleep(1.0)
 
     ###################################################################################################
     #                       Prints data out from each iteration of n                                  #  
@@ -67,17 +69,18 @@ for f in range(10):
     #     print("Node", i.id, "has", i.successful_xmissions, "transmissions.")
 
     # print("Total transmission time for each packet successful packet", Node._time_xmission)
-    # print("Total number of collisions after", t_itr, ":", Node._num_collisions)
+    # print("Total number of collisions after", itr, ":", Node._num_collisions)
     # print("Total number of successful transmision: ", Node._num_successful_xmission)
     # print(Node._m)
     # print(Node._n)
-    ## exit()
+    # exit()
     ###################################################################################################
     
     # Appending data to lists so we can plot
     x.append(str(f+1) + "/10" + "m") # x-axis = (m*1/10, m*2/10, ..... ) 
     y_success.append(Node._num_successful_xmission) # y1-axis = number succesful transmissions 
     y_collision.append(Node._num_collisions)# y2-axis = number of collisions
+    Node.clearData()
     cars.clear()
 
 # matplotlib plotting 
