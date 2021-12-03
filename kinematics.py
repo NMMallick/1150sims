@@ -44,9 +44,12 @@ if sol1 < 0:
 elif sol2 < 0:
     time = sol1
 
-#add total delay data from system.py to time 
-#solve for new minimum distance required to avoid accident
-
+# take total delay data from system.py and calculate new minimum braking distance to avoid accident
+delay = 0.002 # placeholder value for delay
+newTime = time + delay
+xAB2 = vel*newTime + (acc_limit/2)*(newTime**2)
 
 print("Minimum time required to avoid accident: (s) ", time)
+print("Minimum distance before braking with total delay: (meters) ", xAB2)
+print("Minimum distance before braking with total delay: (feet) ", xAB2*3.281)
 
