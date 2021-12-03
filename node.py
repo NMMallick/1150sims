@@ -7,8 +7,9 @@ class Node:
     # bytes
     _packetsize = 1399
 
-    _transmission_time = (_packetsize*8)/_bitrate
     _tao = .1
+    _transmission_time = (_packetsize*8)/_bitrate
+    
 
     # Global variables 
     _tNodes = 0
