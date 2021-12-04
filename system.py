@@ -88,7 +88,8 @@ for batch in range(num_batches):
             # sleep(1.0)
 
         ###################################################################################################
-        #                       Prints data out from each iteration of n                                  #  
+        #                       Prints data out from each iteration of n        
+    #                       !!!!!           This gets HEAVY             !!!!!                             #  
         ###################################################################################################
         # print()
         # for i in cars: 
@@ -120,10 +121,11 @@ for batch in range(num_batches):
     # batch_success = np.add(y_success, batch_success)    
     # batch_collision = np.add(y_collision, batch_collision)
 
+avg_cars = total_cars/num_batches
 avg_success = [i / num_batches for i in batch_success]
 avg_collision = [i / num_batches for i in batch_collision]
+avg_succ_per_car = [i/avg_cars for i in avg_success]
 
-"".join
 # matplotlib plotting 
 props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
 textstr = '\n'.join(("Tao={}".format(Node._tao),
@@ -132,14 +134,16 @@ textstr = '\n'.join(("Tao={}".format(Node._tao),
 
 
 plt.figure(figsize=(12,6))
-plt.plot(x, avg_success, 'g', label="Number of average Successful Transmissions")
-plt.plot(x, avg_collision, 'r',label="Number of average Collisions")
+plt.plot(x, avg_success, 'g', label="Average Successful Transmissions")
+plt.plot(x, avg_collision, 'r',label="Average Collisions")
+plt.plot(x, avg_succ_per_car, 'b', label="Average Transmissions/Average Vehicle")
 plt.xticks(rotation=45, fontsize=6)
-plt.xlabel("Value of n", labelpad=20)
+plt.xlabel("Probability of Transmitting", labelpad=20)
 plt.ylabel("Successful Transmissions")
 plt.legend()
 plt.title("m = liftime of useful data/transmission time")
 plt.text(0.7, 60, textstr, bbox=props)
+
 # Save and show the plot
 plt.savefig('data.png')
 plt.show()
