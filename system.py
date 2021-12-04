@@ -11,7 +11,6 @@ def sim(VERBOSE=True, n=40, s=1000):
 
     # Variables for plotting
     x = []
-    max_num_collisions = []
     y_success = []
     y_collision = []
 
