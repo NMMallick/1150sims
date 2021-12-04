@@ -142,7 +142,7 @@ def sim(VERBOSE=True, n=40, s=1000):
     plt.text(0.7, 60, textstr, bbox=props)
 
     # Save and show the plot
-    plt.savefig('data.png')
+    plt.savefig('transmission_plot.png')
     # plt.show()
 
 
