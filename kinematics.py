@@ -47,7 +47,9 @@ elif sol2 < 0:
     time = sol1
 
 # take total delay data from system.py and calculate new minimum braking distance to avoid accident
-prob, delay = sim(n=10)
+# n = number of batches
+# m = number slots 
+prob, delay = sim()
 
 xAB2 = [] # array to hold values for distances
 x_time = [] #array to hold values for total delay values
@@ -68,8 +70,9 @@ for i in delay:
 
 plt.figure(figsize=(12,6))
 # plot( {data for x-axis}, {data for y-axis} )
-plt.plot(x_time, xAB2, 'g', label="Deceleration Distance")
-plt.plot(prob, delay, 'r', label="Probability of Cars Transmitting")
+plt.plot(prob, xAB2, 'g', label="Deceleration Distance")
+plt.plot(prob, x_time, 'b', label="Transmission delay + decelleration time" )
+plt.plot(prob, delay, 'r', label="Transmission delays")
 plt.xticks(rotation=45, fontsize=6)
 plt.xlabel("Time to Decelerate + Traffic Delay time", labelpad=20)
 plt.ylabel("Deceleration Distance")
