@@ -158,7 +158,7 @@ def sim(VERBOSE=True):
     pr_succ_xmission = [i / slots for i in avg_succ_per_car]
     throughput = [(i*0.9*Node._packetsize)/Node._transmission_time for i in pr_succ_xmission]
     avg_xmission_delay = [Node._packetsize/i for i in throughput]
-    print(avg_xmission_delay)
+    
     return (x, avg_xmission_delay)
  
 
