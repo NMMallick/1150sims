@@ -8,6 +8,8 @@
 # Car B - vehicle infront of speeding car B
 
 import math
+import matplotlib.pyplot as plt
+from system import sim
 
 # 0.8g's (7.84532 m/s^2) is the limit to effective braking of a given vehicle
 acc_limit = 7.84532
@@ -45,11 +47,28 @@ elif sol2 < 0:
     time = sol1
 
 # take total delay data from system.py and calculate new minimum braking distance to avoid accident
-delay = 0.002 # placeholder value for delay
-newTime = time + delay
-xAB2 = vel*newTime + (acc_limit/2)*(newTime**2)
+delay = 0.13 # placeholder value for delay
+
+xAB2 = []
+for i in range()
+    newTime = time + i
+    xAB2 = vel*newTime + (acc_limit/2)*(newTime**2)
+    perChange = ((xAB2 - xAB)/xAB)*100
 
 print("Minimum time required to avoid accident: (s) ", time)
 print("Minimum distance before braking with total delay: (meters) ", xAB2)
 print("Minimum distance before braking with total delay: (feet) ", xAB2*3.281)
+print("Percent change of distance: ", perChange)
 
+
+
+plt.figure(figsize=(12,6))
+plt.plot(x, avg_distance, 'g', label="Deceleration Distance")
+plt.xticks(rotation=45, fontsize=6)
+plt.xlabel("Probability of Car Transmitting", labelpad=20)
+plt.ylabel("Deceleration Distance")
+plt.legend()
+plt.title("Delta X = Change in Deceleration Distance vs Transmission Traffic")
+# Save and show the plot
+plt.savefig('data2.png')
+plt.show()
