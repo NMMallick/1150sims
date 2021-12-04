@@ -3,11 +3,11 @@ from node import Node
 import numpy as np
 import matplotlib.pyplot as plt
 
-def sim(VERBOSE=True): 
+def sim(VERBOSE=True, n=40, s=1000): 
     # Variables for simulations
     cars = []
     slots = 1000
-    num_batches = 40
+    num_batches = n
 
     # Variables for plotting
     x = []
