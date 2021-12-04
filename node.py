@@ -1,6 +1,9 @@
 import random
 
 class Node: 
+    
+    # Global variables 
+    
     # 27 Mbps  
     _bitrate = 27*(10**6)
     
@@ -9,16 +12,14 @@ class Node:
 
     _tao = .01
     _transmission_time = (_packetsize*8)/_bitrate
-    
-    # Global variables 
+
     _tNodes = 0
     _slot = 0
     _num_collisions = 0
     _num_successful_xmission = 0
     _is_transmiting = []
-    _time_xmission = _transmission_time
     _m = _tao/_transmission_time
-    _n = (0.5)*_m
+    _n = (0.5)*_m # DEFAULT ----> THIS WILL CHANGE 
     _ptransmit = _n/_m
 
     
