@@ -16,10 +16,10 @@ acc_limit = 7.84532
 
 
 # Car A variables
-vA_init = float(input("Velocity for Car A [ Car A -> Car B ] : (mph) "))/2.237
+vA_init = float(input("Velocity for Car B [ Car B -> Car A ] : (mph) "))/2.237
 
 # Car B variables
-vB_init = float(input("Velocity for Car B [ Car A -> Car B ] : (mph) "))/2.237
+vB_init = float(input("Velocity for Car A [ Car B -> Car A ] : (mph) "))/2.237
 
 
 
@@ -30,7 +30,6 @@ vel = vA_init - vB_init
 
 # Limit for successfull braking
 xAB = 2 - ((vel**2)/(2*(-acc_limit)))
-#  - (vB_init*(vA_init/acc_limit))
 
 print("Minimum distance before braking: (meters) ", xAB)
 print("Minimum distance before braking: (feet) ", xAB*3.281)
@@ -67,17 +66,19 @@ for i in delay:
 #print("Minimum distance before braking with total delay: (feet) ", xAB2*3.281)
 #print("Percent change of distance: ", perChange)
 
-
+ref = [xAB]*len(xAB2)
 plt.figure(figsize=(12,6))
-# plot( {data for x-axis}, {data for y-axis} )
-plt.plot(prob, xAB2, 'g', label="Deceleration Distance(m)")
+
+plt.plot(prob, xAB2, 'g', label="Deceleration distance(m)")
 plt.plot(prob, x_time, 'b', label="Transmission delay + decelleration time (s)" )
 plt.plot(prob, delay, 'r', label="Transmission delays(s)")
+plt.plot(prob, ref, 'm', label="Original braking distance(m)")
 plt.xticks(rotation=45, fontsize=6)
 plt.xlabel("Probability a node will transmit", labelpad=20)
-# plt.ylabel("Deceleration Distance")
+
 plt.legend()
 plt.title("Delta X = Change in Deceleration Distance vs Total Delay")
+
 # Save and show the plot
 plt.savefig('kinematics_plot.png')
 plt.show()

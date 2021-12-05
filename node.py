@@ -58,14 +58,13 @@ class Node:
                 self.next_xmission = -1
         else: 
             if self.ptransmit()[0] == 1: 
-                Node._is_transmiting.append(self.id)
-
-    def __del__(self): 
-        Node._tNodes -= 1
-        
+                Node._is_transmiting.append(self.id)    
 
     def clearData(): 
         Node._tNodes = 0
         Node._slot = 0
         Node._num_collisions = 0
         Node._num_successful_xmission = 0
+    
+    def __del__(self): 
+        Node._tNodes -= 1

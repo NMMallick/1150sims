@@ -23,9 +23,7 @@ def sim(VERBOSE=True, n=40, s=1000):
 
 
 
-    # Start of simulation batch
-    # print("Simulating batch number:")###### ADD BATCH NUMBER 
-
+    ############################ Start of simulation batch ############################
     for batch in range(num_batches):
         
         num_cars = random.randint(0,25)
@@ -121,8 +119,8 @@ def sim(VERBOSE=True, n=40, s=1000):
     avg_collision = [i / num_batches for i in batch_collision]
     avg_succ_per_car = [i / avg_cars for i in avg_success]
 
-    # matplotlib plotting 
 
+    ################################### matplotlib plotting ###################################
     props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
     textstr = '\n'.join(("Tao={}".format(Node._tao),
                         "Packet Size={}Bytes".format(Node._packetsize),
@@ -140,18 +138,10 @@ def sim(VERBOSE=True, n=40, s=1000):
     plt.title("m = liftime of useful data/transmission time")
     plt.text(0.7, 60, textstr, bbox=props)
 
-    # Save and show the plot
+    # Save the plot
     plt.savefig('transmission_plot.png')
-    # plt.show()
-
-
 
     # RETTURN DATA FOR KINEMATICS EQUATIONS
-
-    # Probability for a given car to successfully transmit is:
-    #   average success per car/number slots = P
-    #   P*useful_data/xmission_t = throughput  
-    #   throughput*packet_size = transmission -----> kinematics.py
     
     # Assuming that useful data is 90% of packet size 
     pr_succ_xmission = [i / slots for i in avg_succ_per_car]
@@ -159,10 +149,9 @@ def sim(VERBOSE=True, n=40, s=1000):
     avg_xmission_delay = [Node._packetsize/i for i in throughput]
     
     return (x, avg_xmission_delay)
- 
 
-def main(): 
-    sim()
 
+
+# Main function
 if __name__ == "__main__": 
-    main()
+    sim()
